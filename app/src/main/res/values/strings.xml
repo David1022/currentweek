@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">currentweek</string>
+    <string name="main_activity_question_text">What\'s the current week number?</string>
+    <string name="main_activity_text_button">Check</string>
+    <string name="title_activity_login">Sign in</string>
+</resources>
