@@ -3,4 +3,5 @@
     <dimen name="margin_start">16dp</dimen>
     <dimen name="margin_end">16dp</dimen>
     <dimen name="main_activity_elements_margin_top">20dp</dimen>
+    <dimen name="margin_in_result_activity">16dp</dimen>
 </resources>
