@@ -27,20 +27,30 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/enter_text"/>
 
-        <EditText
+        <android.support.design.widget.TextInputLayout
             android:id="@+id/enter_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_start"
-            android:layout_marginStart="@dimen/margin_start"
-            android:layout_marginEnd="@dimen/margin_end"
-            android:layout_marginRight="@dimen/margin_end"
-            android:layout_marginTop="10dp"
-            android:inputType="number"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/question_text"
-            app:layout_constraintBottom_toTopOf="@id/check_button"/>
+            app:layout_constraintBottom_toTopOf="@id/check_button">
+
+            <AutoCompleteTextView
+                android:id="@+id/enter_autocomplete_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/week_number"
+                android:layout_marginLeft="@dimen/margin_start"
+                android:layout_marginStart="@dimen/margin_start"
+                android:layout_marginEnd="@dimen/margin_end"
+                android:layout_marginRight="@dimen/margin_end"
+                android:layout_marginTop="@dimen/main_activity_elements_margin_top"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true"/>
+
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/check_button"

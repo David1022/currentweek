@@ -11,8 +11,10 @@ import java.util.Calendar;
 
 public class ResultActivity extends AppCompatActivity {
 
+    public static final String IS_SOUND_PLAYED = "Is sound played";
     private TextView resultText;
     private Button resultButton;
+    private boolean isSoundPlayed = false; // Avoid playing sound more than one time
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,10 @@ public class ResultActivity extends AppCompatActivity {
         mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                mp.start();
+                if (!isSoundPlayed) {
+                    mp.start();
+                    isSoundPlayed = true;
+                }
             }
         });
     }
@@ -82,8 +87,26 @@ public class ResultActivity extends AppCompatActivity {
         calendar.setFirstDayOfWeek(Calendar.MONDAY);
         calendar.setTime(calendar.getTime());
 
-        //Toast.makeText(this, String.valueOf(calendar.get(Calendar.WEEK_OF_YEAR)), Toast.LENGTH_SHORT).show();
-
         return calendar.get(Calendar.WEEK_OF_YEAR);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putBoolean(IS_SOUND_PLAYED, isSoundPlayed);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            if (savedInstanceState.containsKey(IS_SOUND_PLAYED)) {
+                isSoundPlayed = savedInstanceState.getBoolean(IS_SOUND_PLAYED);
+            }
+        }
+
+
     }
 }

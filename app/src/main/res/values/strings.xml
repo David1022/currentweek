@@ -11,4 +11,5 @@
     <string name="start_again">Start again</string>
     <string name="failed">You have failed, try again!!</string>
     <string name="try_again">Try again</string>
+    <string name="week_number">Week number</string>
 </resources>
