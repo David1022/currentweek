@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Current week</string>
+    <string name="main_activity_question_text">Quin és el número de setmana?</string>
+    <string name="main_activity_text_button">Comprovar</string>
+
+    <string name="resultScreenTitle">Resultat</string>
+
+    <string name="prompt_no_number">Introdueix el número de setmana actual</string>
+    <string name="right">Correcte!!</string>
+    <string name="start_again">Tornar a començar</string>
+    <string name="failed">Has fallat, torna a provar!!</string>
+    <string name="try_again">Tornar a provar</string>
+    <string name="week_number">Número de setmana</string>
+</resources>
