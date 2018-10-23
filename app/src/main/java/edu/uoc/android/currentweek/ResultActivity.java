@@ -24,9 +24,12 @@ public class ResultActivity extends AppCompatActivity {
         setTitle(R.string.resultScreenTitle);
 
         init();
-        checkWeekNumber();
+        fillResultScreen();
     }
 
+    /**
+     * Initialize vars
+     */
     private void init() {
         resultText = findViewById(R.id.resut_text);
         resultButton = findViewById(R.id.result_button);
@@ -39,10 +42,13 @@ public class ResultActivity extends AppCompatActivity {
         });
     }
 
-    private void checkWeekNumber() {
+    /**
+     * Fill data of result screen (text, colors and sounds)
+     */
+    private void fillResultScreen() {
         MediaPlayer mp;
 
-        if (isRightNumber()) {
+        if (checkWeekNumber()) {
             resultText.setText(getResources().getString(R.string.right));
             resultText.setTextColor(getResources().getColor(R.color.colorRight));
             resultButton.setText(getResources().getString(R.string.start_again));
@@ -59,6 +65,10 @@ public class ResultActivity extends AppCompatActivity {
         playSound(mp);
     }
 
+    /**
+     * Play the sound assigned
+     * @param mp - Media player to play
+     */
     private void playSound(MediaPlayer mp) {
         mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
@@ -71,7 +81,11 @@ public class ResultActivity extends AppCompatActivity {
         });
     }
 
-    private boolean isRightNumber() {
+    /**
+     *
+     * @return wether the entry number is rigth
+     */
+    private boolean checkWeekNumber() {
         Bundle bundle = getIntent().getExtras();
         int enterWeekNumber = bundle.getInt(MainActivity.NUMBER_KEY);
 
@@ -82,6 +96,10 @@ public class ResultActivity extends AppCompatActivity {
         return false;
     }
 
+    /**
+     *
+     * @return current week of year
+     */
     private int getCurrentWeekNumber() {
         Calendar calendar = Calendar.getInstance();
         calendar.setFirstDayOfWeek(Calendar.MONDAY);
@@ -90,6 +108,10 @@ public class ResultActivity extends AppCompatActivity {
         return calendar.get(Calendar.WEEK_OF_YEAR);
     }
 
+    /**
+     * Save the entry data
+     * @param outState
+     */
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -97,6 +119,10 @@ public class ResultActivity extends AppCompatActivity {
         outState.putBoolean(IS_SOUND_PLAYED, isSoundPlayed);
     }
 
+    /**
+     * Restore the entry data
+     * @param savedInstanceState
+     */
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
